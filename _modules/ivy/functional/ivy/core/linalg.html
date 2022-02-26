@@ -84,10 +84,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../why_ivy.html">Why Ivy?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../using_ivy.html">Using Ivy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../training_a_network.html">Training a Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing to Ivy</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Array</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../array/array_mode_handler.html">Array mode handler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../array/array_api.html">Array api</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/conversions.html">Conversions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/device.html">Device</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/general.html">General</a></li>
@@ -99,6 +100,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/meta.html">Meta</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/random.html">Random</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../array/reductions.html">Reductions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Functional</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../functional/backends.html">Backends</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../functional/ivy.html">Ivy</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Graph compiler</span></p>
 <ul>
@@ -203,7 +209,7 @@
 <span class="kn">from</span> <span class="nn">ivy.framework_handler</span> <span class="kn">import</span> <span class="n">current_framework</span> <span class="k">as</span> <span class="n">_cur_framework</span>
 
 
-<div class="viewcode-block" id="svd"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/svd.html#ivy.functional.ivy.core.linalg.svd">[docs]</a><span class="k">def</span> <span class="nf">svd</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="svd"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/svd.html#ivy.functional.ivy.core.linalg.svd">[docs]</a><span class="k">def</span> <span class="nf">svd</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Singular Value Decomposition.</span>
 <span class="sd">    When x is a 2D array, it is factorized as u @ numpy.diag(s) @ vh = (u * s) @ vh, where u and vh are 2D unitary</span>
@@ -211,8 +217,6 @@
 
 <span class="sd">    :param x: Input array with number of dimensions &gt;= 2.</span>
 <span class="sd">    :type x: array</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return:</span>
 <span class="sd">        u -&gt; { (…, M, M), (…, M, K) } array \n</span>
 <span class="sd">        Unitary array(s). The first (number of dims - 2) dimensions have the same size as those of the input a.</span>
@@ -226,37 +230,12 @@
 <span class="sd">        Unitary array(s). The first (number of dims - 2) dimensions have the same size as those of the input a.</span>
 <span class="sd">        The size of the last two dimensions depends on the value of full_matrices.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="vector_norm"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/vector_norm.html#ivy.functional.ivy.core.linalg.vector_norm">[docs]</a><span class="k">def</span> <span class="nf">vector_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Compute the vector p-norm.</span>
-
-<span class="sd">    :param x: Input array.</span>
-<span class="sd">    :type x: array</span>
-<span class="sd">    :param p: Order of the norm. Default is 2.</span>
-<span class="sd">    :type p: int or str, optional</span>
-<span class="sd">    :param axis: If axis is an integer, it specifies the axis of x along which to compute the vector norms.</span>
-<span class="sd">                 Default is None, in which case the flattened array is considered.</span>
-<span class="sd">    :type axis: int or sequence of ints, optional</span>
-<span class="sd">    :param keepdims: If this is set to True, the axes which are normed over are left in the result as dimensions with</span>
-<span class="sd">                     size one. With this option the result will broadcast correctly against the original x.</span>
-<span class="sd">                     Default is False.</span>
-<span class="sd">    :type keepdims: bool, optional</span>
-<span class="sd">    :return: Vector norm of the array at specified axes.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="o">-</span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">reduce_min</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">p</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;float32&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span>
-    <span class="n">x_raised</span> <span class="o">=</span> <span class="n">x</span> <span class="o">**</span> <span class="n">p</span>
-    <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">x_raised</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">p</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="matrix_norm"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/matrix_norm.html#ivy.functional.ivy.core.linalg.matrix_norm">[docs]</a><span class="k">def</span> <span class="nf">matrix_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="matrix_norm"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/matrix_norm.html#ivy.functional.ivy.core.linalg.matrix_norm">[docs]</a><span class="k">def</span> <span class="nf">matrix_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the matrix p-norm.</span>
 
@@ -271,41 +250,35 @@
 <span class="sd">                     size one. With this option the result will broadcast correctly against the original x.</span>
 <span class="sd">                     Default is False.</span>
 <span class="sd">    :type keepdims: bool, optional</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return: Matrix norm of the array at specified axes.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">matrix_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">matrix_norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="inv"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/inv.html#ivy.functional.ivy.core.linalg.inv">[docs]</a><span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="inv"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/inv.html#ivy.functional.ivy.core.linalg.inv">[docs]</a><span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the (multiplicative) inverse of x matrix.</span>
 <span class="sd">    Given a square matrix x, returns the matrix x_inv satisfying dot(x, x_inv) = dot(x_inv, x) = eye(x.shape[0]).</span>
 
 <span class="sd">    :param x: Matrix to be inverted.</span>
 <span class="sd">    :type x: array</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return: (Multiplicative) inverse of the matrix x.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="pinv"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/pinv.html#ivy.functional.ivy.core.linalg.pinv">[docs]</a><span class="k">def</span> <span class="nf">pinv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="pinv"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/pinv.html#ivy.functional.ivy.core.linalg.pinv">[docs]</a><span class="k">def</span> <span class="nf">pinv</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the pseudo inverse of x matrix.</span>
 
 <span class="sd">    :param x: Matrix to be pseudo inverted.</span>
 <span class="sd">    :type x: array</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return: pseudo inverse of the matrix x.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="vector_to_skew_symmetric_matrix"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/vector_to_skew_symmetric_matrix.html#ivy.functional.ivy.core.linalg.vector_to_skew_symmetric_matrix">[docs]</a><span class="k">def</span> <span class="nf">vector_to_skew_symmetric_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="vector_to_skew_symmetric_matrix"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/vector_to_skew_symmetric_matrix.html#ivy.functional.ivy.core.linalg.vector_to_skew_symmetric_matrix">[docs]</a><span class="k">def</span> <span class="nf">vector_to_skew_symmetric_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Given vector :math:`\mathbf{a}\in\mathbb{R}^3`, return associated skew-symmetric matrix</span>
 <span class="sd">    :math:`[\mathbf{a}]_×\in\mathbb{R}^{3×3}` satisfying :math:`\mathbf{a}×\mathbf{b}=[\mathbf{a}]_×\mathbf{b}`.\n</span>
@@ -313,23 +286,43 @@
 
 <span class="sd">    :param vector: Vector to convert *[batch_shape,3]*.</span>
 <span class="sd">    :type vector: array</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return: Skew-symmetric matrix *[batch_shape,3,3]*.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">vector_to_skew_symmetric_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span><span class="o">.</span><span class="n">vector_to_skew_symmetric_matrix</span><span class="p">(</span><span class="n">vector</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="cholesky"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/cholesky.html#ivy.functional.ivy.core.linalg.cholesky">[docs]</a><span class="k">def</span> <span class="nf">cholesky</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="cholesky"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/cholesky.html#ivy.functional.ivy.core.linalg.cholesky">[docs]</a><span class="k">def</span> <span class="nf">cholesky</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the cholesky decomposition of the x matrix.</span>
 
 <span class="sd">    :param x: Matrix to be decomposed.</span>
 <span class="sd">    :type x: array</span>
-<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
-<span class="sd">    :type f: ml_framework, optional</span>
 <span class="sd">    :return: cholesky decomposition of the matrix x.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="qr"><a class="viewcode-back" href="../../../../../functional/ivy/core/linalg/qr.html#ivy.functional.ivy.core.linalg.qr">[docs]</a><span class="k">def</span> <span class="nf">qr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;reduced&quot;</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the qr decomposition of the x matrix.</span>
+
+<span class="sd">    :param x: Matrix to be decomposed.</span>
+<span class="sd">    :type x: array</span>
+<span class="sd">    :param mode: The option to choose between the full and reduced QR decomposition.</span>
+<span class="sd">    :type mode: str, optional</span>
+<span class="sd">    :param f: Machine learning framework. Inferred from inputs if None.</span>
+<span class="sd">    :type f: ml_framework, optional</span>
+<span class="sd">    :return: qr decomposition of the matrix x.</span>
+
+<span class="sd">    If x has shape (*, M, N) and considering K = min(M, N).</span>
+<span class="sd">    mode = &#39;reduced&#39; (default): Returns (Q, R) of shapes (*, M, K), (*, K, N) respectively.</span>
+<span class="sd">    mode = &#39;complete&#39;: Returns (Q, R) of shapes (*, M, M), (*, M, N) respectively.</span>
+<span class="sd">    mode = &#39;r&#39;: Computes only the reduced R. Returns (Q, R) with Q empty and R of shape (*, K, N).</span>
+
+<span class="sd">    Please note that different frameworks support different modes. For example: mode=&#39;raw&#39;</span>
+<span class="sd">    is supported in numpy but not in pytorch. Similarly, tensorflow doesn&#39;t support &#39;r&#39; mode.</span>
+<span class="sd">    The &#39;reduced&#39; and &#39;complete&#39; modes are sufficient for most of the use-cases and are supported</span>
+<span class="sd">    by all the frameworks.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_cur_framework</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

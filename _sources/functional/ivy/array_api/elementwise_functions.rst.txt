@@ -1,0 +1,24 @@
+Elementwise functions
+=====================
+
+.. automodule:: ivy.functional.ivy.array_api.elementwise_functions
+    :members:
+    :special-members: __init__
+    :undoc-members:
+    :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: -1
+   :caption: Elementwise functions
+
+   elementwise_functions/bitwise_and.rst
+   elementwise_functions/isfinite.rst
+   elementwise_functions/asinh.rst
+   elementwise_functions/sqrt.rst
+   elementwise_functions/cosh.rst
+   elementwise_functions/isnan.rst
+   elementwise_functions/less.rst
+   elementwise_functions/cos.rst
+   elementwise_functions/logical_not.rst
+
