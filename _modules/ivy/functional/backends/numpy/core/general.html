@@ -106,15 +106,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../functional/backends.html">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../functional/ivy.html">Ivy</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Graph compiler</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/compiler.html">Compiler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/globals.html">Globals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/graph.html">Graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/helpers.html">Helpers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/op_logging.html">Op logging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../../../graph_compiler/param.html">Param</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Stateful</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../../stateful/activations.html">Activations</a></li>
@@ -296,9 +287,6 @@
     <span class="k">return</span> <span class="kc">False</span></div>
 
 
-<span class="n">equal</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">:</span> <span class="n">x1</span> <span class="o">==</span> <span class="n">x2</span>
-
-
 <div class="viewcode-block" id="dtype_bits"><a class="viewcode-back" href="../../../../../../functional/backends/numpy/core/general/dtype_bits.html#ivy.functional.backends.numpy.core.general.dtype_bits">[docs]</a><span class="k">def</span> <span class="nf">dtype_bits</span><span class="p">(</span><span class="n">dtype_in</span><span class="p">):</span>
     <span class="n">dtype_str</span> <span class="o">=</span> <span class="n">dtype_to_str</span><span class="p">(</span><span class="n">dtype_in</span><span class="p">)</span>
     <span class="k">if</span> <span class="s1">&#39;bool&#39;</span> <span class="ow">in</span> <span class="n">dtype_str</span><span class="p">:</span>
@@ -306,7 +294,6 @@
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">dtype_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;uint&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;bfloat&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span></div>
 
 
-<span class="n">equal</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
 <span class="n">copy_array</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">array_equal</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">array_equal</span>
 <span class="n">to_numpy</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
@@ -324,14 +311,7 @@
 <span class="nb">round</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">floormod</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span> <span class="o">%</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">floor</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="n">ceil</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="nb">abs</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-
-<div class="viewcode-block" id="argmax"><a class="viewcode-back" href="../../../../../../functional/backends/numpy/core/general/argmax.html#ivy.functional.backends.numpy.core.general.argmax">[docs]</a><span class="k">def</span> <span class="nf">argmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="n">ret</span> <span class="o">=</span> <span class="n">_np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">ret</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">():</span>
-        <span class="k">return</span> <span class="n">ret</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ret</span></div>
 
 
 <div class="viewcode-block" id="argmin"><a class="viewcode-back" href="../../../../../../functional/backends/numpy/core/general/argmin.html#ivy.functional.backends.numpy.core.general.argmin">[docs]</a><span class="k">def</span> <span class="nf">argmin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>

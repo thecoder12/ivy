@@ -106,15 +106,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../backends.html">Backends</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ivy.html">Ivy</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Graph compiler</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/compiler.html">Compiler</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/globals.html">Globals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/graph.html">Graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/helpers.html">Helpers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/op_logging.html">Op logging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../graph_compiler/param.html">Param</a></li>
-</ul>
 <p class="caption"><span class="caption-text">Stateful</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../stateful/activations.html">Activations</a></li>
@@ -270,23 +261,6 @@ Because of floating point overflow, this rule may result in the last element of 
 </dd></dl>
 
 <dl class="py function">
-<dt id="ivy.functional.ivy.core.general.argmax">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">axis</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span><a class="reference internal" href="../../../_modules/ivy/functional/ivy/core/general.html#argmax"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.core.general.argmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the index with the largest value across axes of an array.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>array</em>) – Input array containing elements to argmax.</p></li>
-<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>optional</em>) – Axis to perform the argmax, default is 0.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Tensor containing the indices of the maximum values across the specified axis.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt id="ivy.functional.ivy.core.general.argmin">
 <code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">argmin</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">axis</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span><a class="reference internal" href="../../../_modules/ivy/functional/ivy/core/general.html#argmin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.core.general.argmin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the index with the smallest value across axes of an array.</p>
@@ -417,20 +391,6 @@ sequence.</p></li>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The newly cache wrapped function.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="ivy.functional.ivy.core.general.ceil">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">ceil</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span><a class="reference internal" href="../../../_modules/ivy/functional/ivy/core/general.html#ceil"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.core.general.ceil" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns element-wise smallest integer not less than x.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>array</em>) – Input array to ceil.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An array of the same shape and type as x, with the elements ceiled to integers.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -738,25 +698,6 @@ Inserts a new axis that will appear at the axis position in the expanded array s
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>array with the number of dimensions increased by onearray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="ivy.functional.ivy.core.general.flip">
-<code class="sig-prename descclassname">ivy.</code><code class="sig-name descname">flip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">axis</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">batch_shape</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Iterable<span class="p">[</span>int<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>ivy.array.Array<span class="p">, </span>ivy.NativeArray<span class="p">]</span><a class="reference internal" href="../../../_modules/ivy/functional/ivy/core/general.html#flip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#ivy.functional.ivy.core.general.flip" title="Permalink to this definition">¶</a></dt>
-<dd><p>Reverses the ord of elements in an array along the given axis.
-The shape of the array is preserved, but the elements are reordered.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<em>array</em>) – Input array.</p></li>
-<li><p><strong>axis</strong> (<em>None</em><em> or </em><em>int</em><em> or </em><em>sequence of ints</em><em>, </em><em>optional</em>) – Axis or axes along which to flip over. The default, axis: int = None, will flip over all axes.</p></li>
-<li><p><strong>batch_shape</strong> (<em>sequence of ints</em><em>, </em><em>optional</em>) – Shape of batch. Inferred from inputs if None.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An array with the entries of axis reversed.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1808,15 +1749,12 @@ If not given, then the type of the original array is used.</p></li>
 <li class="toctree-l1"><a class="reference internal" href="general/round.html">round</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/floormod.html">floormod</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/floor.html">floor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="general/ceil.html">ceil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/abs.html">abs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="general/argmax.html">argmax</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/argmin.html">argmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/arange.html">arange</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/linspace.html">linspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/logspace.html">logspace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/concatenate.html">concatenate</a></li>
-<li class="toctree-l1"><a class="reference internal" href="general/flip.html">flip</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/stack.html">stack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/unstack.html">unstack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="general/split.html">split</a></li>
