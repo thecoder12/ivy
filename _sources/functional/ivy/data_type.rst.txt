@@ -1,0 +1,22 @@
+Data type
+=========
+
+.. automodule:: ivy.functional.ivy.data_type
+    :members:
+    :special-members: __init__
+    :undoc-members:
+    :show-inheritance:
+
+
+.. toctree::
+   :maxdepth: -1
+   :caption: Data type
+
+   data_type/iinfo.rst
+   data_type/finfo.rst
+   data_type/dtype.rst
+   data_type/dtype_bits.rst
+   data_type/dtype_to_str.rst
+   data_type/is_int_dtype.rst
+   data_type/is_float_dtype.rst
+
